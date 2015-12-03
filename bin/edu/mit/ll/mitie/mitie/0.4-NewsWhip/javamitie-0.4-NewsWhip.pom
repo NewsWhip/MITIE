@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <name>javamitie</name>
+
+  <groupId>du.mit.ll.mitie</groupId>
+  <artifactId>javamitie</artifactId>
+  <version>0.4-NewsWhip</version>
+  <description>MITIE Java Bindings</description>
+  <url>https://github.com/mit-nlp/MITIE</url>
+  <inceptionYear>2008</inceptionYear>
+  <issueManagement>
+  	<system>GitHub</system>
+  	<url>https://github.com/mit-nlp/MITIE/issues</url>
+  </issueManagement>
+  <licenses>
+  	<license>
+  		<name>Boost Software License - Version 1.0 - August 17th, 2003.</name>
+  		<url>https://github.com/mit-nlp/MITIE#license</url>
+  		<distribution>repo</distribution>
+  	</license>  
+  </licenses>
+  <scm>
+  	<url>https://github.com/mit-nlp/MITIE</url>
+    <connection>scm:git:https://github.com/mit-nlp/MITIE.git</connection>
+    <!-- <developerConnection>scm:git:git@github.com:mit-nlp/MITIE.git</developerConnection> -->
+  </scm>
+  
+  <build>
+    <resources>
+      <resource>
+        <directory>bin</directory>
+      </resource>
+    </resources>
+  </build>
+
+  <distributionManagement>
+    <repository>
+        <id>internal.repo</id>
+        <name>NewsWhip MITIE Release Repository</name>
+        <url>file://${project.build.directory}/mvn-repo</url>
+    </repository>
+  </distributionManagement>
+
+  <profiles>
+    <profile>
+      <id>release-sign-artifacts</id>
+      <activation>
+        <property>
+          <name>performRelease</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+ 
+  <dependencies>
+  </dependencies>
+    
+  <dependencyManagement>
+  	<dependencies>
+  	</dependencies>
+  </dependencyManagement>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- github server corresponds to entry in ~/.m2/settings.xml -->
+    <github.global.server>github</github.global.server>
+  </properties>
+  
+</project>
